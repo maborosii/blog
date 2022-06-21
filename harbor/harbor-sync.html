@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>harbor多集群镜像同步 | maborosii&#39;s documents</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="Notes And diary">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.d6089e11.css" as="style"><link rel="preload" href="/blog/assets/js/app.40e78681.js" as="script"><link rel="preload" href="/blog/assets/js/3.d7764f53.js" as="script"><link rel="preload" href="/blog/assets/js/1.8b920283.js" as="script"><link rel="preload" href="/blog/assets/js/8.5b35edb5.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.c710c39e.js"><link rel="prefetch" href="/blog/assets/js/11.8bd68115.js"><link rel="prefetch" href="/blog/assets/js/12.82beb9b4.js"><link rel="prefetch" href="/blog/assets/js/13.4b828ef9.js"><link rel="prefetch" href="/blog/assets/js/14.89f7642a.js"><link rel="prefetch" href="/blog/assets/js/15.2a6b5cb7.js"><link rel="prefetch" href="/blog/assets/js/16.36b9f925.js"><link rel="prefetch" href="/blog/assets/js/17.1e4990dc.js"><link rel="prefetch" href="/blog/assets/js/18.6be7022d.js"><link rel="prefetch" href="/blog/assets/js/4.8e69495a.js"><link rel="prefetch" href="/blog/assets/js/5.97572ac5.js"><link rel="prefetch" href="/blog/assets/js/6.797fca69.js"><link rel="prefetch" href="/blog/assets/js/7.735c12fe.js"><link rel="prefetch" href="/blog/assets/js/9.8446c5b1.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.d6089e11.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-130b300a><div data-v-130b300a><div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-130b300a data-v-130b300a><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>maborosii's documents</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>Notes And diary</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <!---->
+          2022
+        </a></span></div></div> <div class="hide" data-v-130b300a><header class="navbar" data-v-130b300a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">maborosii's documents</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      maborosii 的博客
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/maborosii" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-130b300a></div> <aside class="sidebar" data-v-130b300a><div class="personal-info-wrapper" data-v-39576ba9 data-v-130b300a><!----> <!----> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>8</h3> <h6 data-v-39576ba9>Articles</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>0</h3> <h6 data-v-39576ba9>Tags</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      maborosii 的博客
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/maborosii" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><a href="/blog/" class="sidebar-heading clickable router-link-active"><span>diary</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/blog/kubernetes/client-go-demo" class="sidebar-heading clickable"><span>Kubernetes</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/blog/harbor/harbor-sync" class="sidebar-heading clickable open active"><span>Harbor</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/harbor/harbor-sync.html" aria-current="page" class="active sidebar-link">harbor多集群镜像同步</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/blog/nginx/nginx-location-1" class="sidebar-heading clickable"><span>Nginx</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/blog/golang/slice" class="sidebar-heading clickable"><span>Go</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/blog/istio/theory" class="sidebar-heading clickable"><span>Istio</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/blog/personalcode/node-metrics-go" class="sidebar-heading clickable"><span>个人项目</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/blog/random/1" class="sidebar-heading clickable"><span>一些记录</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-130b300a><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>harbor多集群镜像同步</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <!---->
+          2022
+        </a></span></div></div> <div data-v-130b300a><main class="page" style="padding-right:0;"><section><div class="page-title"><h1 class="title">harbor多集群镜像同步</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>maborosii</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>5/17/2022</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><blockquote><p>harbor镜像 从源harbor同步到各k8s环境环境，其中harbor的部署形式均为docker-compose</p></blockquote> <p>该文档用于说明源harbor同步镜像到各环境harbor的部署以及使用方法。主要采用的模块为harbor自带的replication功能，该replication功能需要指定目标仓库，源项目，过滤registry，tag等，其触发方式为手动或者事件驱动，事件驱动设置为当符合replication规则的镜像被push到源harbor仓库时，会自动触发该replication。<em><strong>难点在于，一主多从的harbor仓库配置以及网络隔离，这里采用的方案为本地启用nginx正向代理，对应环境的harbor设置专属虚拟域名，从而实现转发。</strong></em></p> <h1 id="源harbor配置项"><a href="#源harbor配置项" class="header-anchor">#</a> 源harbor配置项</h1> <ol><li>容器内部添加域名解析
+<ul><li><p>配置项:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code> <span class="token comment"># docker-compose.yaml</span>
+ <span class="token comment"># 主要添加配置项为extra_hosts</span>
+ <span class="token comment"># 其中core,registry,portal,proxy,chartmuseum等服务均需要添加该hosts</span>
+     <span class="token key atrule">registry</span><span class="token punctuation">:</span>
+       <span class="token key atrule">image</span><span class="token punctuation">:</span> goharbor/registry<span class="token punctuation">-</span>photon<span class="token punctuation">:</span>v2.0.3
+       <span class="token key atrule">container_name</span><span class="token punctuation">:</span> registry
+       <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+       <span class="token key atrule">cap_drop</span><span class="token punctuation">:</span>
+         <span class="token punctuation">-</span> ALL
+       <span class="token key atrule">cap_add</span><span class="token punctuation">:</span>
+         <span class="token punctuation">-</span> CHOWN
+         <span class="token punctuation">-</span> SETGID
+         <span class="token punctuation">-</span> SETUID
+       <span class="token key atrule">extra_hosts</span><span class="token punctuation">:</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;zq.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;fs.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;yf.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;hz.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;st.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;yj.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;mm.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;zh.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;dg.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;qy.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;cz.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;hy.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;sw.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;gz.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;sg.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;mz.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;jy.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;zj.harbor.com:xxx.xx.xx.xxx&quot;</span>
+         <span class="token punctuation">-</span> <span class="token string">&quot;py.harbor.com:xxx.xx.xx.xxx&quot;</span>
+</code></pre></div></li> <li><p>重启harbor: docker-compose up -d</p></li></ul></li> <li>harbor web端添加配置
+<ul><li>添加目标仓库地址
+<img src="/blog/assets/img/20220506144951.ef772b30.png" alt="2"></li> <li>添加replication规则
+<img src="/blog/assets/img/20220506145140.3afd66d9.png" alt="1"></li></ul></li></ol> <h1 id="代理层配置"><a href="#代理层配置" class="header-anchor">#</a> 代理层配置</h1> <ol><li><p>采用代理层的原因：
+每个环境的harbor仓库域名均为harbor.domain.com，在登录过程中会出现问题，其中harbor登录报文如下：
+<img src="/blog/assets/img/20220506151446.603bc2c4.png" alt="3">
+请求过程如下：
+<img src="/blog/assets/img/20220506151225.a34cddd3.png" alt="4"></p> <p>由于各个环境的harbor域名均为harbor.domain.com，那么在第三次发起请求时，客户端会按照第二次请求返回的响应头的Www-Authenticate里的值进行该次请求，那么该次请求的url会是***http://harbor.domain.com:5002/service/token***，那么客户端在第三次请求的时候就无法将请求发送到正确的目标服务端。<em><strong>解决方案为，在源harbor和目标harbor中添加一层正向代理，且在当响应码状态为401的时候，修改响应头里的	Www-Authenticate的值，将harbor.domain.com:5002修改为对应环境的虚拟域名，该代理组件采用openresty</strong></em>。</p></li> <li><p>openresty配置</p> <ul><li><p>nginx配置：</p> <div class="language-nginx extra-class"><pre class="language-nginx"><code>  <span class="token directive"><span class="token keyword">upstream</span> qy_harbor</span> <span class="token punctuation">{</span>
+      <span class="token directive"><span class="token keyword">server</span> xx.xxx.xxx.xx:5002 max_fails=3 fail_timeout=10s</span><span class="token punctuation">;</span>
+  
+      <span class="token directive"><span class="token keyword">keepalive</span> <span class="token number">2</span></span><span class="token punctuation">;</span>
+      <span class="token directive"><span class="token keyword">keepalive_requests</span> <span class="token number">100</span></span><span class="token punctuation">;</span>
+      <span class="token directive"><span class="token keyword">keepalive_timeout</span> <span class="token number">45s</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>      
+  <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+      <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">89</span></span><span class="token punctuation">;</span>
+      <span class="token directive"><span class="token keyword">listen</span>       [::]:89</span><span class="token punctuation">;</span>
+      <span class="token directive"><span class="token keyword">server_name</span>  qy.harbor.com</span><span class="token punctuation">;</span>
+      <span class="token directive"><span class="token keyword">root</span>         /usr/share/nginx/html</span><span class="token punctuation">;</span>
+      <span class="token directive"><span class="token keyword">set</span> <span class="token variable">$city</span> qy</span><span class="token punctuation">;</span>
+  
+      <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+          <span class="token directive"><span class="token keyword">proxy_http_version</span> 1.1</span><span class="token punctuation">;</span>
+          <span class="token directive"><span class="token keyword">proxy_set_header</span> Connection <span class="token string">&quot;&quot;</span></span><span class="token punctuation">;</span>
+          <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Real-IP <span class="token variable">$remote_addr</span></span><span class="token punctuation">;</span>
+          <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-For <span class="token variable">$proxy_add_x_forwarded_for</span></span><span class="token punctuation">;</span> 
+  
+          <span class="token directive"><span class="token keyword">proxy_connect_timeout</span> <span class="token number">600</span></span><span class="token punctuation">;</span>
+          <span class="token directive"><span class="token keyword">proxy_read_timeout</span> <span class="token number">600</span></span><span class="token punctuation">;</span>
+          <span class="token directive"><span class="token keyword">proxy_send_timeout</span> <span class="token number">600</span></span><span class="token punctuation">;</span>
+          <span class="token directive"><span class="token keyword">header_filter_by_lua_file</span> lua/changRespHeader.lua</span><span class="token punctuation">;</span>
+          <span class="token directive"><span class="token keyword">proxy_pass</span> http://qy_harbor/</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</code></pre></div></li> <li><p>lua脚本:</p> <div class="language-lua extra-class"><pre class="language-lua"><code>  <span class="token keyword">if</span> ngx<span class="token punctuation">.</span>status <span class="token operator">==</span> <span class="token number">401</span> <span class="token keyword">then</span>
+      <span class="token keyword">local</span> respheader <span class="token operator">=</span> ngx<span class="token punctuation">.</span>resp<span class="token punctuation">.</span><span class="token function">get_headers</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> <span class="token function">pairs</span><span class="token punctuation">(</span>respheader<span class="token punctuation">)</span> <span class="token keyword">do</span>
+          <span class="token keyword">if</span> k <span class="token operator">==</span> <span class="token string">&quot;www-authenticate&quot;</span> <span class="token keyword">then</span>
+              <span class="token keyword">local</span> newstr<span class="token punctuation">,</span> n<span class="token punctuation">,</span> err <span class="token operator">=</span> ngx<span class="token punctuation">.</span>re<span class="token punctuation">.</span><span class="token function">sub</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span><span class="token string">&quot;harbor.domain.com:5002/&quot;</span><span class="token punctuation">,</span> ngx<span class="token punctuation">.</span>var<span class="token punctuation">.</span>city <span class="token operator">..</span> <span class="token string">&quot;.harbor.com:89/&quot;</span><span class="token punctuation">)</span>
+              ngx<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ngx<span class="token punctuation">.</span>INFO<span class="token punctuation">,</span> newstr<span class="token punctuation">)</span>
+              ngx<span class="token punctuation">.</span>header<span class="token punctuation">[</span><span class="token string">&quot;www-authenticate&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> newstr
+          <span class="token keyword">end</span>
+      <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+</code></pre></div></li></ul></li></ol> <h1 id="问题跟踪"><a href="#问题跟踪" class="header-anchor">#</a> 问题跟踪</h1> <p><strong>问题描述</strong></p> <div class="language- extra-class"><pre><code>在通过harbor replication的过程中，有两个环境一直复制失败，harbor的任务日志中提示502 bad gateway。
+</code></pre></div><p><strong>链路分析</strong> <img src="/blog/assets/img/20220506085354.47cbe9bd.png" alt="5"></p> <div class="language- extra-class"><pre><code>查看其中一个环境harbor中各个组件的日志发现，core组件在接收客户端的put请求时，返回502；查看registry日志，显示在put请求过程中客户端断开连接。
+</code></pre></div><p><strong>对比测试</strong></p> <div class="language- extra-class"><pre><code>将其harbor加入docker client的insecure docker registry分组中，直接在客户端本地通过docker push 命令行推送镜像到openresty代理的其harbor中，可推送成功；推测在harbor replication 过程中是客户端未及时收到服务端的响应，从而导致客户端主动断开连接
+</code></pre></div><p><strong>报文跟踪</strong></p> <ol><li><p>同时在源机器和目标机器上抓包</p> <ul><li>源机器报文
+<img src="/blog/assets/img/20220506111609.e2837d4a.png" alt="6"></li> <li>目标机器报文
+<img src="/blog/assets/img/20220506111716.a5b9e75b.png" alt="7"></li></ul></li> <li><p>报文分析</p> <p>从报文tcp流可知，在源端发送put请求的过程中，发生了连接重置（rst报文）；源机器显示是服务端主动发出rst报文，目标机器上显示是客户端主动发出rst报文。而两端报文的发起端的端口不同，一个是46220，一个是47399，推断在源机器和目标机器中间仍有代理环节，是由该代理层主动发出rst报文给服务端，服务端响应rst报文并最终反馈给客户端，导致在源机器上看到的是服务端主动发出的rst报文。</p></li></ol></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/blog/kubernetes/kubelet-readconfig.html" class="prev">
+            kubelet配置读取问题
+          </a></span> <span class="next"><a href="/blog/nginx/nginx-location-1.html">
+            nginx匹配规则之斜杠
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:0;" data-v-cb1513f6></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/blog/assets/js/app.40e78681.js" defer></script><script src="/blog/assets/js/3.d7764f53.js" defer></script><script src="/blog/assets/js/1.8b920283.js" defer></script><script src="/blog/assets/js/8.5b35edb5.js" defer></script>
+  </body>
+</html>
